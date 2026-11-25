@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Measuring AI Adoption | Mouhamed Ndoye</title>
+  <meta name="description" content="Case study: a three-agent AI system in IBM watsonx Orchestrate that helps bank associates use AI safely.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav>
+    <div class="wrap">
+      <a class="brand" href="index.html">Mouhamed Ndoye</a>
+      <ul>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#projects">Projects</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Case Study</p>
+      <h1>Measuring AI Adoption</h1>
+      <p class="lede">A three-agent AI system that helps bank associates use AI on real projects safely.</p>
+      <div class="buttons">
+        <a class="btn btn-primary" href="https://youtu.be/lvUOonhr5vI" target="_blank" rel="noopener">Watch the demo</a>
+        <a class="btn btn-ghost" href="https://github.com/mouhamedrndoye-glitch/measuring-ai-adoption" target="_blank" rel="noopener">View on GitHub</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="case">
+    <section>
+      <div class="wrap">
+        <p class="meta"><strong>Mouhamed Ndoye</strong> | IBM SkillsBuild AI Experiential Learning Lab, Fall 2026<br>
+        <strong>Tools:</strong> IBM watsonx Orchestrate, IBM Bob, IBM Agent Development Kit, Python, GitHub</p>
+
+        <h2>Overview</h2>
+        <p>Measuring AI Adoption is a three-agent AI system that helps bank associates use AI on real projects safely. It plans the work, blocks sensitive data automatically, and drafts research summaries where every number has a source. I designed, built, tested and documented the whole system myself.</p>
+
+        <h2>My Role</h2>
+        <p>I owned the project from start to finish. I framed the problem, held conversations with professionals in the financial services workforce, designed the solution, built the agents in watsonx Orchestrate, used IBM Bob to write the code, tested the system with real public data, and produced the demo video and final submission.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>The Problem</h2>
+        <p>Banks are investing heavily in AI, but many employees don't know where it fits in their daily work or what data is safe to share with it. So they lose time, do the work by hand, or turn to unapproved tools that put company and customer data at risk.</p>
+        <p>The research backs this up. 45% of workers used unapproved AI tools in the past month, and 34% don't know which tools their employer approves (WalkMe, 2026). And 77% of employees say AI tools have added to their workload (The Financial Brand).</p>
+        <p>In my conversations with professionals in the financial services workforce, one theme kept coming up: the hard part isn't getting AI tools, it's knowing how to apply them to real work safely.</p>
+
+        <h2>Who It's For</h2>
+        <p>Bank associates at any level who work on projects with stakeholder deliverables, like research summaries and strategy decks. They're expected to use AI, but they often haven't had role-specific training, and they worry about making mistakes with sensitive data. Early-career associates often know the most about AI tools, but they have the least experience and guidance on applying them to real work safely.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>The Solution</h2>
+        <p>A three-agent system in IBM watsonx Orchestrate that keeps the associate in charge while AI handles the routine work.</p>
+        <ol>
+          <li><strong>Planner:</strong> reads the associate's project brief, splits the work into what AI will do and what the associate will do, and waits for approval.</li>
+          <li><strong>Data Guardrail Agent:</strong> checks every data source. Approved public data goes through; confidential or personal data is blocked with an explanation.</li>
+          <li><strong>Research and Drafting Agent:</strong> uses a custom Python tool to count the data exactly and writes a summary with a source for every number.</li>
+        </ol>
+        <p>The associate then adds their own recommendations and gives final approval.</p>
+
+        <div class="flow" aria-label="How the system works">
+          <div class="step"><b>1. Associate</b>Shares the project brief</div>
+          <div class="step"><b>2. Planner</b>Splits the work and waits for approval</div>
+          <div class="step"><b>3. Guardrail</b>Passes public data, blocks confidential data</div>
+          <div class="step"><b>4. Drafting</b>Counts with a tool and cites every number</div>
+        </div>
+        <p class="caption">The associate starts and finishes every project; confidential data never reaches the Drafting Agent.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>How I Built It</h2>
+        <p>I built all three agents in watsonx Orchestrate on the GPT-OSS 120B model and deployed the system live as version 2.0.0. The Planner hands work to the other two agents as collaborators.</p>
+        <p>IBM Bob was my main development tool. It set up the project folders and Git, wrote a script that cleaned the raw CFPB download into a balanced sample, wrote the count_complaints tool, and created a fake confidential file to test the guardrail. I approved each of Bob's actions one at a time and checked its results before moving on.</p>
+
+        <h2>Testing and Results</h2>
+        <p>I tested the system on 498 public CFPB credit card complaints from the last six months, 166 each for JPMorgan Chase, Citibank and Bank of America.</p>
+        <table>
+          <thead>
+            <tr><th>Test</th><th>Before</th><th>After</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Counting accuracy</td>
+              <td>Agent read part of the file and called 9 complaints 45% of a bank's total</td>
+              <td>count_complaints tool reported 166 per bank and the correct top issues</td>
+            </tr>
+            <tr>
+              <td>Data safety</td>
+              <td>Not yet tested</td>
+              <td>Fake confidential customer file was blocked with an explanation</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <h2>What I Learned</h2>
+        <p>I started this project from scratch. Before it, my only experience was using AI tools, not building with them. I learned agents, Python tools, the command line and GitHub one step at a time, by doing the work.</p>
+        <p>My biggest takeaway is that the way I learned is the way this tool teaches. I didn't master everything first and then build; I learned as I went. Bank associates using this system will do the same. Each plan shows them where AI fits, so learning becomes part of their day-to-day work instead of a separate training they have to find time for.</p>
+
+        <h2>What's Next</h2>
+        <ul>
+          <li><strong>Bank systems:</strong> connect to a bank's own data permissions and compliance policies.</li>
+          <li><strong>More deliverables:</strong> support decks, financial models and reports.</li>
+          <li><strong>Coaching mode:</strong> explain why each task went to AI, so associates learn the reasoning.</li>
+          <li><strong>Measurable impact:</strong> track time saved, unapproved tool use avoided, and growth in AI confidence.</li>
+        </ul>
+
+        <div class="buttons" style="margin-top:28px">
+          <a class="btn btn-primary" href="https://youtu.be/lvUOonhr5vI" target="_blank" rel="noopener">Watch the demo</a>
+          <a class="btn btn-ghost" href="https://github.com/mouhamedrndoye-glitch/measuring-ai-adoption" target="_blank" rel="noopener">View on GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap"><a href="index.html">&larr; Back to home</a> &nbsp;|&nbsp; &copy; 2026 Mouhamed Ndoye</div>
+  </footer>
+</body>
+</html>
