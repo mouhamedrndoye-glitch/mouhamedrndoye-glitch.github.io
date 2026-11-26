@@ -80,6 +80,28 @@
 
     <section>
       <div class="wrap">
+        <h2>See It in Action</h2>
+        <p>Screenshots from the live system in IBM watsonx Orchestrate.</p>
+
+        <figure class="shot">
+          <img src="plan.png" alt="The Planner splits the project into what AI will do and what the associate will do, then waits for approval" loading="lazy">
+          <figcaption><b>1. The plan.</b> The Planner splits the work into what AI will do and what the associate will do, then waits for approval.</figcaption>
+        </figure>
+
+        <figure class="shot">
+          <img src="summary.png" alt="Research summary showing 166 complaints per bank with the top five issues, each with a source" loading="lazy">
+          <figcaption><b>2. The sourced summary.</b> Exact counts of 166 complaints per bank, with the top issues and a source for every number.</figcaption>
+        </figure>
+
+        <figure class="shot">
+          <img src="blocked.png" alt="The Data Guardrail Agent blocks a confidential customer accounts file and explains why" loading="lazy">
+          <figcaption><b>3. The guardrail.</b> A confidential customer file is blocked, with a clear explanation and a safe way to continue.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
         <h2>How I Built It</h2>
         <p>I built all three agents in watsonx Orchestrate on the GPT-OSS 120B model and deployed the system live as version 2.0.0. The Planner hands work to the other two agents as collaborators.</p>
         <p>IBM Bob was my main development tool. It set up the project folders and Git, wrote a script that cleaned the raw CFPB download into a balanced sample, wrote the count_complaints tool, and created a fake confidential file to test the guardrail. I approved each of Bob's actions one at a time and checked its results before moving on.</p>
